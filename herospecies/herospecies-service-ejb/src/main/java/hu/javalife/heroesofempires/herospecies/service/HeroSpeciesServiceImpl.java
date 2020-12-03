@@ -20,6 +20,8 @@ import javax.ws.rs.core.MediaType;
 @Stateless
 public class HeroSpeciesServiceImpl implements HeroSpeciesService{
 
+	private final String ip = "172.17.0.1";
+	
     @Inject
     HeroSpeciesDao dao;
     
@@ -58,14 +60,14 @@ public class HeroSpeciesServiceImpl implements HeroSpeciesService{
         if(sumPercent+pPercent > 100) throw new BusinessException(1);
         
         Client client = ClientBuilder.newClient();
-        Invocation.Builder request = client.target("http://172.17.0.1:8080")
+        Invocation.Builder request = client.target("http://" + ip + ":8080")
             .path("/hero/"+pHeroID)
             .request(MediaType.APPLICATION_JSON);        
         Hero hero = request.get(Hero.class);
         if(hero==null)
             throw new BusinessException(2);
                     
-        request = client.target("http://172.17.0.1:8081")
+        request = client.target("http://" + ip + ":8081")
             .path("/species/"+pSpeciesID)
             .request(MediaType.APPLICATION_JSON);        
         Species species = request.get(Species.class);
