@@ -23,14 +23,16 @@ public class HeroSpeciesDaoImpl implements HeroSpeciesDao{
         return em.find(HeroSpecies.class, pId);
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public List<HeroSpecies> getAllForHero(long pHeroID) {
-        return em.createQuery("HeroSpecies.hero").setParameter("heroid", pHeroID).getResultList();
+        return em.createNamedQuery("HeroSpecies.hero").setParameter("heroid", pHeroID).getResultList();
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public List<HeroSpecies> getAllForSpecies(long pSpeciesID) {
-        return em.createQuery("HeroSpecies.species").setParameter("speciesid", pSpeciesID).getResultList();
+        return em.createNamedQuery("HeroSpecies.species").setParameter("speciesid", pSpeciesID).getResultList();
     }
 
     @Override

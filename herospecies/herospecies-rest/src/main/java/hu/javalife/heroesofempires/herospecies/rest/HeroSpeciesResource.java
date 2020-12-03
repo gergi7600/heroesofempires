@@ -35,13 +35,15 @@ public class HeroSpeciesResource {
     HeroSpeciesService service;
     
     @GET
+    @Produces(MediaType.APPLICATION_JSON)
     public List<HeroSpecies> getHeroesBySpecies(@ApiParam(value = "Species ID") @QueryParam("speciesid") long pID){
         return service.getAllBySpecies(pID);
     }
     
     @GET
+    @Produces(MediaType.APPLICATION_JSON)
     public List<HeroSpecies> getSpeciesByHero(@ApiParam(value = "Hero ID") @QueryParam("heroid") long pID){
-        return service.getAllBySpecies(pID);
+        return service.getAllByHero(pID);
     }
     
     

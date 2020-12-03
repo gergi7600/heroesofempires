@@ -22,7 +22,7 @@ import javax.persistence.Table;
 @Table(name = "hero_species")
 @NamedQueries({
     @NamedQuery(name = "HeroSpecies.hero", query = "SELECT h FROM HeroSpecies h WHERE h.hero.id=:heroid ORDER BY h.species.name"),
-    @NamedQuery(name = "HeroSpecies.species", query = "SELECT h FROM HeroSpecies h WHERE h.species=:speciesid ORDER BY h.hero.name")
+    @NamedQuery(name = "HeroSpecies.species", query = "SELECT h FROM HeroSpecies h WHERE h.species.id=:speciesid ORDER BY h.hero.name")
 })
 public class HeroSpecies implements Serializable {
 
