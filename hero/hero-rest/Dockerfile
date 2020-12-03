@@ -1,13 +1,13 @@
-FROM ubuntu
-
+#FROM ubuntu
+FROM openjdk:jre-alpine
 ADD ./target/hero-thorntail.jar /opt/wildfly-swarm.jar
 
-RUN apt-get update
-RUN apt-get -y install software-properties-common
+#RUN apt-get update
+#RUN apt-get -y install software-properties-common
 
-RUN apt-get -y install openjdk-8-jre
+#RUN apt-get -y install openjdk-8-jre
 
-RUN apt-get -qq update
+#RUN apt-get -qq update
 
 #RUN echo "mysql-server mysql-server/root_password password root" | debconf-set-selections
 #RUN echo "mysql-server mysql-server/root_password_again password root" | debconf-set-selections
