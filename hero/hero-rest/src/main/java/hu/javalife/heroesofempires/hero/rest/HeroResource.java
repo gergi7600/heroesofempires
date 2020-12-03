@@ -81,7 +81,7 @@ public class HeroResource {
         return service.getAll();}
     
     @GET
-    @RolesAllowed("manage-account")   
+    //@RolesAllowed("manage-account")   
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @ApiOperation(value = "Hero by Id",
@@ -98,11 +98,11 @@ public class HeroResource {
         @ApiResponse(code = 404, message = "Hero not found"),
         @ApiResponse(code = 500, message = "some exception")})
     public Response getById(
-            @Context SecurityContext sc,
+            /*@Context SecurityContext sc,*/
             @ApiParam(value = "ID of Hero", required = true) 
             @PathParam("id") @DefaultValue("0") long pId){
-        sc.getUserPrincipal().getName();
-        sc.isUserInRole("manage-account-links");
+        //sc.getUserPrincipal().getName();
+        //sc.isUserInRole("manage-account-links");
         try{return Response.ok(service.getById(pId)).build();}
         catch(BusinessException e){return Response.status(404).entity(e).build();}
         catch(Throwable t){return Response.status(500).build();}
