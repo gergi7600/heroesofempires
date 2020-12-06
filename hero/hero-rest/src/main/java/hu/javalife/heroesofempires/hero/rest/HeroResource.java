@@ -166,8 +166,9 @@ public class HeroResource {
     @DELETE
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
+    @RolesAllowed("manage-account")
     @ApiOperation(value = "Delete Hero by Id",
-        notes = "Delte Hero by Id")
+        notes = "Delete Hero by Id")
     @ApiResponses(value = {
         @ApiResponse(code = 404, message = "Hero not found"),
         @ApiResponse(code = 500, message = "some exception")})
