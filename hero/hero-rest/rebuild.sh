@@ -1,5 +1,5 @@
 cd ..
-mvn install
+mvn clean install -U
 cd -
 docker container rm hero
 docker build --tag hoe .
